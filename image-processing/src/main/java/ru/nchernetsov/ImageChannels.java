@@ -77,7 +77,7 @@ public class ImageChannels {
         int[] array = new int[3 * width * height];
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
-                array[3 * width * y + x] = getRGB(255, red[x][y], 0, 0);
+                array[3 * width * y + x] = getRGB(red[x][y], 0, 0);
                 array[3 * width * y + x + width] = getRGB(0, green[x][y], 0);
                 array[3 * width * y + x + 2 * width] = getRGB(0, 0, blue[x][y]);
             }
