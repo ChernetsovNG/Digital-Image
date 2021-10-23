@@ -2,6 +2,9 @@ package ru.nchernetsov;
 
 public class ColorUtils {
 
+    public static int BLACK = getRGB(0, 0, 0);
+    public static int WHITE = getRGB(255, 255, 255);
+
     public static int getRGB(int red, int green, int blue) {
         return getRGB(255, red, green, blue);
     }

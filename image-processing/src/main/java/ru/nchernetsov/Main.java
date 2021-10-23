@@ -1,11 +1,10 @@
 package ru.nchernetsov;
 
+import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-
-import javax.imageio.ImageIO;
 
 public class Main {
 
@@ -30,5 +29,9 @@ public class Main {
         // all rgb channels in one picture
         BufferedImage rgbChannelsImage = imageChannels.getRGBChannelsImage();
         ImageIO.write(rgbChannelsImage, "bmp", new File("rgb-channels.bmp"));
+
+        // all rgb channels by least significant bit in one picture
+        BufferedImage rgbLeastSignificantBitImage = imageChannels.getRGBLeastSignificantBitImage();
+        ImageIO.write(rgbLeastSignificantBitImage, "bmp", new File("rgb-lsb-channels.bmp"));
     }
 }
