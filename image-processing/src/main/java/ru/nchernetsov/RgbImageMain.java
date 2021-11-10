@@ -1,37 +1,38 @@
 package ru.nchernetsov;
 
-import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 
-public class Main {
+import javax.imageio.ImageIO;
+
+public class RgbImageMain {
 
     public static void main(String[] args) throws IOException {
-        URL bmpPictureURL = Main.class.getClassLoader().getResource("bmp/marbles.bmp");
+        URL bmpPictureURL = RgbImageMain.class.getClassLoader().getResource("bmp/marbles.bmp");
         BufferedImage image = ImageIO.read(bmpPictureURL);
 
-        ImageChannels imageChannels = new ImageChannels(image);
+        RGBImage rgbImage = new RGBImage(image);
 
         // red channel
-        BufferedImage redChannelImage = imageChannels.getRedChannelImage();
+        BufferedImage redChannelImage = rgbImage.getRedChannelImage();
         ImageIO.write(redChannelImage, "bmp", new File("only-red.bmp"));
 
         // green channel
-        BufferedImage greenChannelImage = imageChannels.getGreenChannelImage();
+        BufferedImage greenChannelImage = rgbImage.getGreenChannelImage();
         ImageIO.write(greenChannelImage, "bmp", new File("only-green.bmp"));
 
         // blue channel
-        BufferedImage blueChannelImage = imageChannels.getBlueChannelImage();
+        BufferedImage blueChannelImage = rgbImage.getBlueChannelImage();
         ImageIO.write(blueChannelImage, "bmp", new File("only-blue.bmp"));
 
         // all rgb channels in one picture
-        BufferedImage rgbChannelsImage = imageChannels.getRGBChannelsImage();
+        BufferedImage rgbChannelsImage = rgbImage.getRGBChannelsImage();
         ImageIO.write(rgbChannelsImage, "bmp", new File("rgb-channels.bmp"));
 
         // all rgb channels by least significant bit in one picture
-        BufferedImage rgbLeastSignificantBitImage = imageChannels.getRGBLeastSignificantBitImage();
+        BufferedImage rgbLeastSignificantBitImage = rgbImage.getRGBLeastSignificantBitImage();
         ImageIO.write(rgbLeastSignificantBitImage, "bmp", new File("rgb-lsb-channels.bmp"));
     }
 }

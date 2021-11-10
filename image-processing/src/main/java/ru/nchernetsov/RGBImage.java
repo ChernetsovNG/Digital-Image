@@ -2,16 +2,18 @@ package ru.nchernetsov;
 
 import java.awt.image.BufferedImage;
 
-import static ru.nchernetsov.ColorUtils.*;
+import static ru.nchernetsov.utils.ColorUtils.BLACK;
+import static ru.nchernetsov.utils.ColorUtils.WHITE;
+import static ru.nchernetsov.utils.ColorUtils.getRGB;
 
-public class ImageChannels {
+public class RGBImage {
     private final int width;
     private final int height;
     private final int[][] red;
     private final int[][] green;
     private final int[][] blue;
 
-    public ImageChannels(BufferedImage image) {
+    public RGBImage(BufferedImage image) {
         this.width = image.getWidth();
         this.height = image.getHeight();
         this.red = new int[width][height];
