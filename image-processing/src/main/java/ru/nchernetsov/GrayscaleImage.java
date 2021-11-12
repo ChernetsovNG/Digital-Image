@@ -2,6 +2,9 @@ package ru.nchernetsov;
 
 import java.awt.image.BufferedImage;
 
+import static ru.nchernetsov.utils.ColorUtils.getRGB;
+import static ru.nchernetsov.utils.ImageUtils.createBufferedImage;
+
 public class GrayscaleImage {
     private final int width;
     private final int height;
@@ -72,5 +75,15 @@ public class GrayscaleImage {
 
     public int[][] getBrightness() {
         return brightness;
+    }
+
+    public BufferedImage getImage() {
+        int[] array = new int[width * height];
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                array[y * width + x] = getRGB(brightness[x][y]);
+            }
+        }
+        return createBufferedImage(width, height, array);
     }
 }
