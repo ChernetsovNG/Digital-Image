@@ -24,6 +24,13 @@ public class GrayscaleImage {
         fill(image);
     }
 
+    public GrayscaleImage(int brightnessResolution, int width, int height, int[][] brightness) {
+        this.brightnessResolution = brightnessResolution;
+        this.width = width;
+        this.height = height;
+        this.brightness = brightness;
+    }
+
     private void fill(BufferedImage image) {
         int red, green, blue;
         for (int y = 0; y < height; y++) {
@@ -49,5 +56,21 @@ public class GrayscaleImage {
         double original = x * 1.0 / 255;
         double result = original * (1 << this.brightnessResolution);
         return (int) result;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public int getBrightnessResolution() {
+        return brightnessResolution;
+    }
+
+    public int[][] getBrightness() {
+        return brightness;
     }
 }

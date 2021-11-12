@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 import static ru.nchernetsov.utils.ColorUtils.BLACK;
 import static ru.nchernetsov.utils.ColorUtils.WHITE;
 import static ru.nchernetsov.utils.ColorUtils.getRGB;
+import static ru.nchernetsov.utils.ImageUtils.createBufferedImage;
 
 public class RGBImage {
     private final int width;
@@ -52,7 +53,7 @@ public class RGBImage {
                 array[y * width + x] = getRGB(red[x][y], 0, 0);
             }
         }
-        return createBufferedImage(array);
+        return createBufferedImage(width, height, array);
     }
 
     public BufferedImage getGreenChannelImage() {
@@ -62,7 +63,7 @@ public class RGBImage {
                 array[y * width + x] = getRGB(0, green[x][y], 0);
             }
         }
-        return createBufferedImage(array);
+        return createBufferedImage(width, height, array);
     }
 
     public BufferedImage getBlueChannelImage() {
@@ -72,7 +73,7 @@ public class RGBImage {
                 array[y * width + x] = getRGB(0, 0, blue[x][y]);
             }
         }
-        return createBufferedImage(array);
+        return createBufferedImage(width, height, array);
     }
 
     public BufferedImage getRGBChannelsImage() {
@@ -101,12 +102,6 @@ public class RGBImage {
         }
         BufferedImage bufferedImage = new BufferedImage(3 * width, height, BufferedImage.TYPE_3BYTE_BGR);
         bufferedImage.setRGB(0, 0, 3 * width, height, array, 0, 3 * width);
-        return bufferedImage;
-    }
-
-    private BufferedImage createBufferedImage(int[] data) {
-        BufferedImage bufferedImage = new BufferedImage(width, height, BufferedImage.TYPE_3BYTE_BGR);
-        bufferedImage.setRGB(0, 0, width, height, data, 0, width);
         return bufferedImage;
     }
 }
